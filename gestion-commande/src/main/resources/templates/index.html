@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Order Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container my-2">
+        <h1>Liste des commandes</h1>
+
+        <a th:href="@{/showNewCommandeForm}" class="btn btn-primary btn-sm mb-3"> Ajouter une commande </a>
+
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th>Libellé</th>
+                    <th>Numéro de chambre</th>
+                    <th>Nom</th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="commande : ${listCommandes}">
+                    <td th:text="${commande.libelle}"></td>
+                    <td th:text="${commande.numChambre}"></td>
+                    <td th:text="${commande.nom}"></td>
+                    <td> <a th:href="@{/showFormForUpdate/{id}(id=${commande.id})}" class="btn btn-primary">Mettre à jour</a>
+                        <a th:href="@{/deleteCommande/{id}(id=${commande.id})}" class="btn btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+From java:8
+Expose 8083
+ADD /target/gestion-commande-0.0.1-SNAPSHOT.jar gestion-commande.jar
+ENTRYPOINT ["java","-jar","gestion-commande.jar"] 
